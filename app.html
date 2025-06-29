@@ -17,21 +17,24 @@
   <div class="dashboard-wrapper">
     <!-- Header -->
     <header class="app-header">
-      <div class="logo-section">
-        <!-- <img src="logo.png" alt="taskFlow Logo" class="logo-icon" /> -->
-        <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="taskFlow Logo" class="logo-icon" />
-        <div class="logo-text">taskFlow</div>
-      </div>
-      <div class="actions">
-        <div class="user-info">
-          <span class="user-label">Abc</span>
-          <div id="avatar" class="avatar">AB</div>
+        <div class="logo-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="taskFlow Logo" class="logo-icon" />
+          <div class="logo-text">taskFlow</div>
         </div>
-        <button id="export" class="btn"><span>⬇</span> Export</button>
-        <button id="import" class="btn"><span>⬆</span> Import</button>
-        <button id="signout" class="btn danger">🚪 Sign Out</button>
-      </div>
-    </header>
+      
+        <button class="hamburger" id="hamburger-btn">☰</button>
+      
+        <div class="actions" id="nav-actions">
+          <div class="user-info">
+            <span class="user-label">Abc</span>
+            <div id="avatar" class="avatar">AB</div>
+          </div>
+          <button id="export" class="btn"><span>⬇</span> Export</button>
+          <button id="import" class="btn"><span>⬆</span> Import</button>
+          <button id="signout" class="btn danger">🚪 Sign Out</button>
+        </div>
+      </header>
+      
 
     <!-- Main Dashboard -->
     <main class="dashboard-content">
@@ -83,6 +86,15 @@
       localStorage.setItem("mode", mode);
     }
   </script>
+  <script>
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navActions = document.getElementById("nav-actions");
+  
+    hamburgerBtn.addEventListener("click", () => {
+      navActions.classList.toggle("show");
+    });
+  </script>
+  
   
 </body>
 </html>
