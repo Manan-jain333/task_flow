@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow - Dashboard</title>
+  <script>
+    const savedMode = localStorage.getItem("mode");
+    if (savedMode === "dark") {
+      document.body?.classList?.remove("dark"); // force light
+    }
+  </script>
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard">
+  <div class="dashboard-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-section">
+        <!-- <img src="logo.png" alt="taskFlow Logo" class="logo-icon" /> -->
+        <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="taskFlow Logo" class="logo-icon" />
+        <div class="logo-text">taskFlow</div>
+      </div>
+      <div class="actions">
+        <div class="user-info">
+          <span class="user-label">Abc</span>
+          <div id="avatar" class="avatar">AB</div>
+        </div>
+        <button id="export" class="btn"><span>⬇</span> Export</button>
+        <button id="import" class="btn"><span>⬆</span> Import</button>
+        <button id="signout" class="btn danger">🚪 Sign Out</button>
+      </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-content">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-tab="todo">Todo (<span id="todo-count">0</span>)</button>
+        <button class="tab" data-tab="completed">Completed (<span id="completed-count">0</span>)</button>
+        <button class="tab" data-tab="archived">Archived (<span id="archived-count">0</span>)</button>
+      </div>
+
+      <!-- Task Input Controls -->
+      <div class="task-controls">
+        <input type="text" id="taskInput" placeholder="Add your task here..." />
+        <select id="priority">
+          <option value="">Select Priority</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <button id="addTask" class="btn primary">+ Add Task</button>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="task-filters">
+        <input type="text" id="search" placeholder="Search tasks..." />
+        <select id="filterPriority">
+          <option value="">All Priorities</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+
+      <!-- Task List Output -->
+      <div id="taskContainer" class="task-list"></div>
+    </main>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <!-- <button class="toggle-mode" onclick="document.body.classList.toggle('dark')">🌓</button> -->
+  <button class="toggle-mode" onclick="toggleTheme()">🌓</button>
+
+
+  <script src="script.js"></script>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      const mode = document.body.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("mode", mode);
+    }
+  </script>
+  
+</body>
+</html>
